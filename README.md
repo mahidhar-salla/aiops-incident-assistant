@@ -6,7 +6,7 @@
 
 **What this will show**
 
-- **The problem:** during an incident, the first 20–30 minutes [CONFIRM: drop or replace this number] go into reading alerts and logs across application, network and certificate layers before anyone can say what is actually broken.
+- **The problem:** the early part of an incident goes into reading alerts and logs across application, network and certificate layers before anyone can say what is actually broken.
 - **The SRE skill:** incident response and root-cause analysis, alert correlation, and GenAI/LLM ops done carefully: grounded answers with citations, PII redaction, no automatic actions, and an evaluation harness that scores summaries against labelled incidents.
 - **The business impact:** faster, more consistent triage and better post-incident write-ups, with a human always making the call.
 
