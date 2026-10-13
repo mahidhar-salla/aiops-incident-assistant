@@ -1,0 +1,13 @@
+id: inc-001-db-pool
+title: Orders API latency and 5xx
+alerts:
+- ts: '2026-09-14T02:05:45Z'
+  name: OrdersApiHighLatencyP99
+  service: orders-api
+  severity: page
+  summary: p99 latency above 2s for 5m
+- ts: '2026-09-14T02:06:20Z'
+  name: OrdersApiErrorBudgetBurn
+  service: orders-api
+  severity: page
+  summary: 14.4x burn rate on availability SLO

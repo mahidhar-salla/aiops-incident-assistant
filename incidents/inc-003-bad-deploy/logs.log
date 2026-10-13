@@ -1,0 +1,46 @@
+2026-09-14T02:00:05Z INFO deploy-controller payment authorised card=4111 1111 1111 6860 amount=42.10 status=ok
+2026-09-14T02:00:24Z INFO mobile-bff scheduled job heartbeat ok
+2026-09-14T02:00:30Z INFO deploy-controller cache hit ratio=0.81
+2026-09-14T02:00:35Z INFO mobile-bff scheduled job heartbeat ok
+2026-09-14T02:00:52Z INFO mobile-bff cache hit ratio=0.97
+2026-09-14T02:00:53Z INFO deploy-controller user login ok email=maria13@example.com src_ip=203.0.113.248
+2026-09-14T02:01:03Z INFO deploy-controller GET /healthz 200 2ms
+2026-09-14T02:01:03Z INFO accounts-api GET /healthz 200 2ms
+2026-09-14T02:01:20Z INFO deploy-controller scheduled job heartbeat ok
+2026-09-14T02:01:23Z INFO deploy-controller GC pause young 8ms
+2026-09-14T02:01:38Z INFO deploy-controller GET /healthz 200 2ms
+2026-09-14T02:01:40Z INFO deploy-controller rollout started deployment=accounts-api image=accounts-api:2.14.0 replicas=6
+2026-09-14T02:01:52Z INFO mobile-bff GET /healthz 200 2ms
+2026-09-14T02:02:38Z INFO mobile-bff payment authorised card=4111 1111 1111 9947 amount=42.10 status=ok
+2026-09-14T02:02:40Z INFO deploy-controller rollout complete deployment=accounts-api revision=41
+2026-09-14T02:02:51Z INFO mobile-bff user login ok email=alex67@example.com src_ip=203.0.113.10
+2026-09-14T02:02:55Z ERROR accounts-api unhandled exception in GET /v1/accounts/summary: KeyError: 'currency' (version=2.14.0)
+2026-09-14T02:03:00Z ERROR mobile-bff accounts-api returned 500 path=/v1/accounts/summary
+2026-09-14T02:03:03Z INFO mobile-bff cache hit ratio=0.94
+2026-09-14T02:03:08Z INFO accounts-api user login ok email=li22@example.com src_ip=203.0.113.215
+2026-09-14T02:03:11Z INFO accounts-api GC pause young 8ms
+2026-09-14T02:03:20Z ERROR accounts-api unhandled exception in GET /v1/accounts/summary: KeyError: 'currency' (version=2.14.0)
+2026-09-14T02:03:21Z INFO deploy-controller request completed status=200 path=/v1/deploy duration_ms=22
+2026-09-14T02:03:23Z INFO accounts-api scheduled job heartbeat ok
+2026-09-14T02:03:32Z INFO mobile-bff payment authorised card=4111 1111 1111 2450 amount=42.10 status=ok
+2026-09-14T02:04:00Z WARN accounts-api error rate 18% over last 60s (previous revision 40 baseline 0.1%)
+2026-09-14T02:04:03Z INFO accounts-api scheduled job heartbeat ok
+2026-09-14T02:04:12Z INFO deploy-controller scheduled job heartbeat ok
+2026-09-14T02:04:38Z INFO mobile-bff request completed status=200 path=/v1/mobile duration_ms=53
+2026-09-14T02:04:41Z INFO accounts-api user login ok email=maria1@example.com src_ip=203.0.113.184
+2026-09-14T02:04:44Z INFO mobile-bff GET /healthz 200 2ms
+2026-09-14T02:04:44Z INFO mobile-bff GC pause young 8ms
+2026-09-14T02:04:47Z INFO deploy-controller cache hit ratio=0.81
+2026-09-14T02:04:50Z INFO mobile-bff payment authorised card=4111 1111 1111 3683 amount=42.10 status=ok
+2026-09-14T02:05:05Z INFO mobile-bff cache hit ratio=0.80
+2026-09-14T02:05:12Z INFO deploy-controller request completed status=200 path=/v1/deploy duration_ms=64
+2026-09-14T02:05:13Z INFO deploy-controller payment authorised card=4111 1111 1111 2739 amount=42.10 status=ok
+2026-09-14T02:06:24Z INFO accounts-api GC pause young 8ms
+2026-09-14T02:06:39Z INFO mobile-bff request completed status=200 path=/v1/mobile duration_ms=27
+2026-09-14T02:06:40Z INFO mobile-bff cache hit ratio=0.95
+2026-09-14T02:06:41Z INFO deploy-controller payment authorised card=4111 1111 1111 8879 amount=42.10 status=ok
+2026-09-14T02:07:07Z INFO mobile-bff cache hit ratio=0.92
+2026-09-14T02:07:17Z INFO deploy-controller GET /healthz 200 2ms
+2026-09-14T02:07:23Z INFO deploy-controller scheduled job heartbeat ok
+2026-09-14T02:07:26Z INFO accounts-api GC pause young 8ms
+2026-09-14T02:07:38Z INFO deploy-controller scheduled job heartbeat ok

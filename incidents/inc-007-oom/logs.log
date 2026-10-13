@@ -1,0 +1,44 @@
+2026-09-14T02:00:22Z INFO quote-svc GC pause young 8ms
+2026-09-14T02:00:42Z INFO quote-svc request completed status=200 path=/v1/quote duration_ms=7
+2026-09-14T02:01:25Z INFO quote-svc request completed status=200 path=/v1/quote duration_ms=32
+2026-09-14T02:01:40Z WARN quote-svc heap usage 812MiB of 1024MiB limit, cache entries=1940221
+2026-09-14T02:01:53Z INFO kubelet user login ok email=maria35@example.com src_ip=203.0.113.96
+2026-09-14T02:02:15Z INFO quote-svc GC pause young 8ms
+2026-09-14T02:02:27Z INFO quote-svc scheduled job heartbeat ok
+2026-09-14T02:02:29Z INFO kubelet GC pause young 8ms
+2026-09-14T02:02:48Z INFO quote-svc payment authorised card=4111 1111 1111 6590 amount=42.10 status=ok
+2026-09-14T02:02:53Z INFO quote-svc scheduled job heartbeat ok
+2026-09-14T02:02:55Z INFO kubelet cache hit ratio=0.95
+2026-09-14T02:02:56Z INFO kubelet request completed status=200 path=/v1/kubelet duration_ms=88
+2026-09-14T02:02:57Z INFO kubelet user login ok email=omar70@example.com src_ip=203.0.113.161
+2026-09-14T02:03:13Z INFO kubelet request completed status=200 path=/v1/kubelet duration_ms=42
+2026-09-14T02:03:18Z INFO quote-svc GC pause young 8ms
+2026-09-14T02:03:40Z INFO quote-svc GC pause young 8ms
+2026-09-14T02:03:40Z WARN quote-svc heap usage 1001MiB of 1024MiB limit, cache entries=2381904
+2026-09-14T02:03:54Z INFO quote-svc payment authorised card=4111 1111 1111 6577 amount=42.10 status=ok
+2026-09-14T02:03:56Z INFO quote-svc GC pause young 8ms
+2026-09-14T02:04:00Z ERROR kubelet container quote-svc in pod quote-svc-7d9f exited: OOMKilled (exit code 137)
+2026-09-14T02:04:02Z INFO kubelet cache hit ratio=0.93
+2026-09-14T02:04:04Z INFO kubelet GET /healthz 200 2ms
+2026-09-14T02:04:05Z INFO quote-svc cache hit ratio=0.94
+2026-09-14T02:04:10Z INFO kubelet Back-off restarting failed container quote-svc restartCount=6
+2026-09-14T02:04:25Z INFO quote-svc GET /healthz 200 2ms
+2026-09-14T02:04:33Z INFO kubelet payment authorised card=4111 1111 1111 1486 amount=42.10 status=ok
+2026-09-14T02:04:50Z INFO quote-svc payment authorised card=4111 1111 1111 3136 amount=42.10 status=ok
+2026-09-14T02:05:20Z INFO quote-svc payment authorised card=4111 1111 1111 7314 amount=42.10 status=ok
+2026-09-14T02:05:24Z INFO kubelet cache hit ratio=0.99
+2026-09-14T02:05:36Z INFO quote-svc payment authorised card=4111 1111 1111 9611 amount=42.10 status=ok
+2026-09-14T02:05:47Z INFO kubelet GET /healthz 200 2ms
+2026-09-14T02:06:06Z INFO kubelet cache hit ratio=0.92
+2026-09-14T02:06:13Z INFO quote-svc scheduled job heartbeat ok
+2026-09-14T02:06:32Z INFO kubelet GC pause young 8ms
+2026-09-14T02:06:41Z INFO quote-svc user login ok email=omar72@example.com src_ip=203.0.113.12
+2026-09-14T02:06:42Z INFO kubelet user login ok email=chen44@example.com src_ip=203.0.113.182
+2026-09-14T02:06:52Z INFO kubelet cache hit ratio=0.91
+2026-09-14T02:07:15Z INFO quote-svc user login ok email=priya35@example.com src_ip=203.0.113.109
+2026-09-14T02:07:41Z INFO quote-svc payment authorised card=4111 1111 1111 9876 amount=42.10 status=ok
+2026-09-14T02:07:48Z INFO kubelet GET /healthz 200 2ms
+2026-09-14T02:07:49Z INFO quote-svc payment authorised card=4111 1111 1111 8915 amount=42.10 status=ok
+2026-09-14T02:07:50Z INFO kubelet user login ok email=omar51@example.com src_ip=203.0.113.158
+2026-09-14T02:07:56Z INFO quote-svc request completed status=200 path=/v1/quote duration_ms=65
+2026-09-14T02:07:57Z INFO kubelet GC pause young 8ms

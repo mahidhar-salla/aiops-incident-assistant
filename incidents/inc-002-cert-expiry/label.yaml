@@ -1,0 +1,6 @@
+category: cert_expiry
+root_cause: The client certificate used by payments-gateway for the partner mTLS connection expired at midnight UTC.
+key_lines:
+- L9
+- L10
+- L18

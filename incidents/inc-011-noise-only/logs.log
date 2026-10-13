@@ -1,0 +1,41 @@
+2026-09-14T02:00:11Z INFO web-frontend GC pause young 8ms
+2026-09-14T02:00:14Z INFO web-frontend cache hit ratio=0.85
+2026-09-14T02:00:15Z INFO web-frontend user login ok email=li29@example.com src_ip=203.0.113.161
+2026-09-14T02:00:26Z INFO search-api scheduled job heartbeat ok
+2026-09-14T02:00:38Z INFO web-frontend payment authorised card=4111 1111 1111 1417 amount=42.10 status=ok
+2026-09-14T02:00:40Z INFO web-frontend scheduled job heartbeat ok
+2026-09-14T02:00:46Z INFO search-api cache hit ratio=0.92
+2026-09-14T02:00:56Z INFO web-frontend request completed status=200 path=/v1/web duration_ms=60
+2026-09-14T02:01:03Z INFO web-frontend request completed status=200 path=/v1/web duration_ms=33
+2026-09-14T02:01:07Z INFO search-api payment authorised card=4111 1111 1111 9397 amount=42.10 status=ok
+2026-09-14T02:01:10Z INFO web-frontend GET /healthz 200 2ms
+2026-09-14T02:01:48Z INFO search-api scheduled job heartbeat ok
+2026-09-14T02:02:25Z INFO web-frontend payment authorised card=4111 1111 1111 8028 amount=42.10 status=ok
+2026-09-14T02:02:36Z INFO search-api user login ok email=li58@example.com src_ip=203.0.113.185
+2026-09-14T02:02:40Z INFO web-frontend request completed status=200 path=/v1/web duration_ms=83
+2026-09-14T02:02:41Z INFO web-frontend GC pause young 8ms
+2026-09-14T02:02:44Z INFO web-frontend GET /healthz 200 2ms
+2026-09-14T02:02:58Z INFO web-frontend request completed status=200 path=/v1/web duration_ms=78
+2026-09-14T02:03:06Z INFO web-frontend request completed status=200 path=/v1/web duration_ms=16
+2026-09-14T02:03:20Z INFO web-frontend user login ok email=sam92@example.com src_ip=203.0.113.16
+2026-09-14T02:03:20Z WARN search-api slow query took 1250ms index=products
+2026-09-14T02:03:26Z INFO search-api scheduled job heartbeat ok
+2026-09-14T02:03:53Z INFO web-frontend scheduled job heartbeat ok
+2026-09-14T02:03:55Z INFO web-frontend payment authorised card=4111 1111 1111 6205 amount=42.10 status=ok
+2026-09-14T02:03:57Z INFO web-frontend user login ok email=jordan19@example.com src_ip=203.0.113.201
+2026-09-14T02:04:21Z INFO search-api cache hit ratio=0.87
+2026-09-14T02:04:24Z INFO search-api request completed status=200 path=/v1/search duration_ms=14
+2026-09-14T02:05:11Z INFO web-frontend GC pause young 8ms
+2026-09-14T02:05:14Z INFO search-api GC pause young 8ms
+2026-09-14T02:05:22Z INFO search-api GC pause young 8ms
+2026-09-14T02:05:58Z INFO web-frontend GC pause young 8ms
+2026-09-14T02:06:00Z INFO web-frontend scheduled job heartbeat ok
+2026-09-14T02:06:01Z INFO web-frontend GET /healthz 200 2ms
+2026-09-14T02:06:10Z INFO web-frontend GC pause young 8ms
+2026-09-14T02:06:36Z INFO search-api payment authorised card=4111 1111 1111 7059 amount=42.10 status=ok
+2026-09-14T02:06:48Z INFO search-api GC pause young 8ms
+2026-09-14T02:06:50Z INFO web-frontend GC pause young 8ms
+2026-09-14T02:07:03Z INFO search-api GET /healthz 200 2ms
+2026-09-14T02:07:26Z INFO web-frontend GET /healthz 200 2ms
+2026-09-14T02:07:48Z INFO search-api GC pause young 8ms
+2026-09-14T02:07:59Z INFO web-frontend cache hit ratio=0.84

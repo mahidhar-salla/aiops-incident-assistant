@@ -1,0 +1,13 @@
+id: inc-005-disk-full
+title: Report exports failing
+alerts:
+- ts: '2026-09-14T02:04:00Z'
+  name: NodeFilesystemAlmostOutOfSpace
+  service: node-exporter
+  severity: ticket
+  summary: /var/lib/export over 95% used
+- ts: '2026-09-14T02:05:10Z'
+  name: ExportJobsFailing
+  service: export-worker
+  severity: page
+  summary: export job failure ratio above 50%

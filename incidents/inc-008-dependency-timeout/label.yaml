@@ -1,0 +1,7 @@
+category: dependency_timeout
+root_cause: fraud-score, a downstream dependency, slowed to ~9s p99; application-api calls timed out and the circuit breaker opened.
+key_lines:
+- L10
+- L12
+- L16
+- L18

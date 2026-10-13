@@ -1,0 +1,44 @@
+2026-09-14T02:00:03Z INFO postgres-billing scheduled job heartbeat ok
+2026-09-14T02:00:30Z INFO secrets-operator rotated secret billing-db-credentials version=7
+2026-09-14T02:00:31Z INFO secrets-operator scheduled job heartbeat ok
+2026-09-14T02:00:38Z INFO postgres-billing payment authorised card=4111 1111 1111 1858 amount=42.10 status=ok
+2026-09-14T02:00:40Z INFO secrets-operator GC pause young 8ms
+2026-09-14T02:00:47Z INFO secrets-operator GC pause young 8ms
+2026-09-14T02:01:15Z INFO secrets-operator user login ok email=priya9@example.com src_ip=203.0.113.48
+2026-09-14T02:01:16Z INFO postgres-billing request completed status=200 path=/v1/postgres duration_ms=21
+2026-09-14T02:01:26Z INFO billing-svc GET /healthz 200 2ms
+2026-09-14T02:01:30Z ERROR postgres-billing FATAL: password authentication failed for user "billing_app"
+2026-09-14T02:01:32Z ERROR billing-svc could not open connection: FATAL: password authentication failed for user "billing_app"
+2026-09-14T02:01:33Z INFO billing-svc request completed status=200 path=/v1/billing duration_ms=15
+2026-09-14T02:02:00Z WARN billing-svc connection pool has 0 healthy connections, retrying
+2026-09-14T02:02:23Z INFO billing-svc payment authorised card=4111 1111 1111 8561 amount=42.10 status=ok
+2026-09-14T02:02:32Z INFO postgres-billing scheduled job heartbeat ok
+2026-09-14T02:03:01Z INFO billing-svc request completed status=200 path=/v1/billing duration_ms=10
+2026-09-14T02:03:17Z INFO secrets-operator GET /healthz 200 2ms
+2026-09-14T02:03:39Z INFO billing-svc user login ok email=maria25@example.com src_ip=203.0.113.224
+2026-09-14T02:03:44Z INFO postgres-billing GET /healthz 200 2ms
+2026-09-14T02:03:48Z INFO billing-svc cache hit ratio=0.98
+2026-09-14T02:04:02Z INFO billing-svc GET /healthz 200 2ms
+2026-09-14T02:04:06Z INFO billing-svc request completed status=200 path=/v1/billing duration_ms=21
+2026-09-14T02:04:13Z INFO billing-svc GET /healthz 200 2ms
+2026-09-14T02:04:27Z INFO secrets-operator request completed status=200 path=/v1/secrets duration_ms=69
+2026-09-14T02:04:31Z INFO secrets-operator payment authorised card=4111 1111 1111 9048 amount=42.10 status=ok
+2026-09-14T02:04:33Z INFO billing-svc user login ok email=alex81@example.com src_ip=203.0.113.45
+2026-09-14T02:04:44Z INFO billing-svc GET /healthz 200 2ms
+2026-09-14T02:05:12Z INFO billing-svc payment authorised card=4111 1111 1111 8305 amount=42.10 status=ok
+2026-09-14T02:05:24Z INFO secrets-operator payment authorised card=4111 1111 1111 5041 amount=42.10 status=ok
+2026-09-14T02:05:35Z INFO postgres-billing payment authorised card=4111 1111 1111 8466 amount=42.10 status=ok
+2026-09-14T02:05:46Z INFO secrets-operator user login ok email=priya85@example.com src_ip=203.0.113.95
+2026-09-14T02:05:51Z INFO postgres-billing cache hit ratio=0.81
+2026-09-14T02:05:59Z INFO billing-svc GC pause young 8ms
+2026-09-14T02:06:07Z INFO billing-svc GC pause young 8ms
+2026-09-14T02:06:14Z INFO postgres-billing GET /healthz 200 2ms
+2026-09-14T02:06:18Z INFO secrets-operator GET /healthz 200 2ms
+2026-09-14T02:06:19Z INFO billing-svc user login ok email=maria70@example.com src_ip=203.0.113.41
+2026-09-14T02:06:26Z INFO billing-svc payment authorised card=4111 1111 1111 7549 amount=42.10 status=ok
+2026-09-14T02:06:40Z INFO billing-svc payment authorised card=4111 1111 1111 2037 amount=42.10 status=ok
+2026-09-14T02:06:41Z INFO billing-svc scheduled job heartbeat ok
+2026-09-14T02:06:43Z INFO postgres-billing scheduled job heartbeat ok
+2026-09-14T02:06:48Z INFO secrets-operator scheduled job heartbeat ok
+2026-09-14T02:06:51Z INFO postgres-billing scheduled job heartbeat ok
+2026-09-14T02:07:05Z INFO secrets-operator payment authorised card=4111 1111 1111 2706 amount=42.10 status=ok

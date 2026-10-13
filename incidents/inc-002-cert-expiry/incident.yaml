@@ -1,0 +1,13 @@
+id: inc-002-cert-expiry
+title: Partner payments failing with TLS errors
+alerts:
+- ts: '2026-09-14T02:01:30Z'
+  name: TLSHandshakeFailuresHigh
+  service: partner-proxy
+  severity: page
+  summary: TLS handshake failure ratio above 50%
+- ts: '2026-09-14T02:02:30Z'
+  name: BlackboxProbeFailed
+  service: payments-gateway
+  severity: ticket
+  summary: probe https://partner.example.test failed

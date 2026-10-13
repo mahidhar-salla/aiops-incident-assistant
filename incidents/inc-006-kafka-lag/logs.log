@@ -1,0 +1,45 @@
+2026-09-14T02:00:02Z INFO notify-consumer payment authorised card=4111 1111 1111 1588 amount=42.10 status=ok
+2026-09-14T02:00:04Z INFO kafka-broker scheduled job heartbeat ok
+2026-09-14T02:00:06Z INFO kafka-broker cache hit ratio=0.97
+2026-09-14T02:00:06Z INFO kafka-broker request completed status=200 path=/v1/kafka duration_ms=33
+2026-09-14T02:00:07Z INFO notify-consumer cache hit ratio=0.80
+2026-09-14T02:01:04Z INFO notify-api payment authorised card=4111 1111 1111 8868 amount=42.10 status=ok
+2026-09-14T02:01:23Z INFO notify-api GC pause young 8ms
+2026-09-14T02:01:30Z INFO notify-api request completed status=200 path=/v1/notify duration_ms=28
+2026-09-14T02:01:33Z INFO kafka-broker GET /healthz 200 2ms
+2026-09-14T02:01:47Z INFO kafka-broker payment authorised card=4111 1111 1111 2668 amount=42.10 status=ok
+2026-09-14T02:02:00Z WARN notify-consumer consumer poll timeout has expired: time between poll() calls exceeded max.poll.interval.ms=300000
+2026-09-14T02:02:05Z INFO kafka-broker group notify-consumers rebalancing: member notify-consumer-3 left (poll timeout)
+2026-09-14T02:02:28Z INFO notify-consumer cache hit ratio=0.87
+2026-09-14T02:02:46Z INFO notify-api GET /healthz 200 2ms
+2026-09-14T02:03:16Z INFO kafka-broker scheduled job heartbeat ok
+2026-09-14T02:03:19Z INFO notify-consumer GET /healthz 200 2ms
+2026-09-14T02:03:35Z INFO notify-api GET /healthz 200 2ms
+2026-09-14T02:03:49Z INFO kafka-broker scheduled job heartbeat ok
+2026-09-14T02:03:53Z INFO notify-consumer GET /healthz 200 2ms
+2026-09-14T02:03:59Z INFO notify-api GET /healthz 200 2ms
+2026-09-14T02:04:24Z INFO notify-consumer payment authorised card=4111 1111 1111 8282 amount=42.10 status=ok
+2026-09-14T02:04:25Z INFO kafka-broker payment authorised card=4111 1111 1111 7222 amount=42.10 status=ok
+2026-09-14T02:04:49Z INFO kafka-broker scheduled job heartbeat ok
+2026-09-14T02:05:00Z WARN notify-consumer consumer group notify-consumers lag=184220 on topic notifications
+2026-09-14T02:05:02Z INFO notify-consumer GET /healthz 200 2ms
+2026-09-14T02:05:06Z INFO notify-api payment authorised card=4111 1111 1111 5415 amount=42.10 status=ok
+2026-09-14T02:05:19Z INFO kafka-broker cache hit ratio=0.95
+2026-09-14T02:05:22Z INFO kafka-broker request completed status=200 path=/v1/kafka duration_ms=67
+2026-09-14T02:05:33Z INFO notify-consumer cache hit ratio=0.88
+2026-09-14T02:05:34Z INFO notify-api cache hit ratio=0.90
+2026-09-14T02:05:56Z INFO notify-consumer payment authorised card=4111 1111 1111 3855 amount=42.10 status=ok
+2026-09-14T02:06:02Z INFO kafka-broker scheduled job heartbeat ok
+2026-09-14T02:06:12Z INFO notify-consumer user login ok email=alex36@example.com src_ip=203.0.113.75
+2026-09-14T02:06:26Z INFO notify-api user login ok email=alex28@example.com src_ip=203.0.113.67
+2026-09-14T02:06:29Z INFO kafka-broker cache hit ratio=0.84
+2026-09-14T02:06:53Z INFO notify-api GET /healthz 200 2ms
+2026-09-14T02:07:00Z WARN notify-consumer batch of 500 records took 341s to process
+2026-09-14T02:07:04Z INFO notify-api GET /healthz 200 2ms
+2026-09-14T02:07:10Z INFO notify-api enqueued notification id=n-55120
+2026-09-14T02:07:12Z INFO notify-consumer request completed status=200 path=/v1/notify duration_ms=41
+2026-09-14T02:07:21Z INFO kafka-broker cache hit ratio=0.95
+2026-09-14T02:07:37Z INFO notify-consumer cache hit ratio=0.80
+2026-09-14T02:07:39Z INFO notify-api scheduled job heartbeat ok
+2026-09-14T02:07:46Z INFO notify-consumer payment authorised card=4111 1111 1111 9171 amount=42.10 status=ok
+2026-09-14T02:07:56Z INFO notify-consumer payment authorised card=4111 1111 1111 6724 amount=42.10 status=ok

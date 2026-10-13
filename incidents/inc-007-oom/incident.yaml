@@ -1,0 +1,8 @@
+id: inc-007-oom
+title: Quote service restarting repeatedly
+alerts:
+- ts: '2026-09-14T02:04:20Z'
+  name: KubePodCrashLooping
+  service: quote-svc
+  severity: page
+  summary: pod quote-svc-7d9f restarting more than 3 times in 15m

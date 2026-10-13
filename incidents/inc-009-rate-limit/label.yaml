@@ -1,0 +1,7 @@
+category: upstream_rate_limit
+root_cause: bureau-adapter exceeded the external bureau API's request quota after a batch re-run and got HTTP 429s.
+key_lines:
+- L4
+- L8
+- L9
+- L17

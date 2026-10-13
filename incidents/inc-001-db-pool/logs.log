@@ -1,0 +1,46 @@
+2026-09-14T02:00:20Z INFO checkout-web request completed status=200 path=/v1/checkout duration_ms=56
+2026-09-14T02:00:39Z INFO orders-api payment authorised card=4111 1111 1111 8587 amount=42.10 status=ok
+2026-09-14T02:00:40Z INFO orders-api GC pause young 8ms
+2026-09-14T02:00:41Z INFO postgres-orders scheduled job heartbeat ok
+2026-09-14T02:00:44Z INFO postgres-orders payment authorised card=4111 1111 1111 6958 amount=42.10 status=ok
+2026-09-14T02:00:44Z INFO checkout-web GET /healthz 200 2ms
+2026-09-14T02:00:55Z INFO postgres-orders request completed status=200 path=/v1/postgres duration_ms=46
+2026-09-14T02:01:08Z INFO checkout-web payment authorised card=4111 1111 1111 6933 amount=42.10 status=ok
+2026-09-14T02:01:10Z INFO postgres-orders GET /healthz 200 2ms
+2026-09-14T02:01:12Z INFO postgres-orders cache hit ratio=0.87
+2026-09-14T02:01:23Z INFO orders-api GC pause young 8ms
+2026-09-14T02:01:30Z INFO checkout-web cache hit ratio=0.96
+2026-09-14T02:01:50Z INFO checkout-web cache hit ratio=0.93
+2026-09-14T02:02:01Z INFO postgres-orders GC pause young 8ms
+2026-09-14T02:02:04Z INFO orders-api cache hit ratio=0.95
+2026-09-14T02:02:07Z INFO orders-api GET /healthz 200 2ms
+2026-09-14T02:02:29Z INFO orders-api scheduled job heartbeat ok
+2026-09-14T02:02:42Z INFO orders-api scheduled job heartbeat ok
+2026-09-14T02:02:44Z INFO postgres-orders GET /healthz 200 2ms
+2026-09-14T02:02:47Z INFO checkout-web payment authorised card=4111 1111 1111 1987 amount=42.10 status=ok
+2026-09-14T02:03:09Z INFO orders-api cache hit ratio=0.82
+2026-09-14T02:03:41Z INFO checkout-web scheduled job heartbeat ok
+2026-09-14T02:04:02Z INFO postgres-orders GC pause young 8ms
+2026-09-14T02:04:12Z INFO checkout-web payment authorised card=4111 1111 1111 2379 amount=42.10 status=ok
+2026-09-14T02:04:12Z INFO orders-api cache hit ratio=0.87
+2026-09-14T02:04:22Z INFO postgres-orders cache hit ratio=0.96
+2026-09-14T02:04:36Z INFO postgres-orders cache hit ratio=0.86
+2026-09-14T02:04:40Z INFO postgres-orders GET /healthz 200 2ms
+2026-09-14T02:04:49Z INFO postgres-orders request completed status=200 path=/v1/postgres duration_ms=75
+2026-09-14T02:04:58Z INFO postgres-orders payment authorised card=4111 1111 1111 1807 amount=42.10 status=ok
+2026-09-14T02:05:00Z WARN orders-api HikariPool-1 - pool stats total=50 active=50 idle=0 waiting=37
+2026-09-14T02:05:30Z ERROR orders-api HikariPool-1 - Connection is not available, request timed out after 30000ms
+2026-09-14T02:05:35Z ERROR checkout-web upstream orders-api returned 503 after 30012ms path=/v1/orders
+2026-09-14T02:05:40Z INFO postgres-orders GET /healthz 200 2ms
+2026-09-14T02:05:56Z INFO postgres-orders GET /healthz 200 2ms
+2026-09-14T02:06:00Z ERROR orders-api SQLTransientConnectionException: connection pool exhausted (waiting=212)
+2026-09-14T02:06:26Z INFO postgres-orders user login ok email=sam22@example.com src_ip=203.0.113.69
+2026-09-14T02:06:33Z INFO postgres-orders user login ok email=priya1@example.com src_ip=203.0.113.181
+2026-09-14T02:06:39Z INFO checkout-web user login ok email=chen94@example.com src_ip=203.0.113.68
+2026-09-14T02:06:39Z INFO checkout-web GC pause young 8ms
+2026-09-14T02:06:40Z INFO checkout-web request completed status=200 path=/v1/checkout duration_ms=4
+2026-09-14T02:06:40Z WARN postgres-orders connections in use 50 of max_connections 200 for role orders_app
+2026-09-14T02:06:49Z INFO orders-api request completed status=200 path=/v1/orders duration_ms=81
+2026-09-14T02:07:00Z ERROR orders-api HikariPool-1 - Connection is not available, request timed out after 30000ms
+2026-09-14T02:07:13Z INFO checkout-web scheduled job heartbeat ok
+2026-09-14T02:07:41Z INFO checkout-web GET /healthz 200 2ms

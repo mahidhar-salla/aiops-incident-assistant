@@ -1,0 +1,7 @@
+category: kafka_consumer_lag
+root_cause: notify-consumer took too long per batch, exceeded max.poll.interval.ms and kept rebalancing, so lag grew.
+key_lines:
+- L11
+- L12
+- L24
+- L37

@@ -1,0 +1,45 @@
+2026-09-14T02:00:13Z INFO coredns cache hit ratio=0.89
+2026-09-14T02:00:22Z INFO statements-svc user login ok email=jordan39@example.com src_ip=203.0.113.127
+2026-09-14T02:00:41Z INFO coredns scheduled job heartbeat ok
+2026-09-14T02:00:43Z INFO coredns GET /healthz 200 2ms
+2026-09-14T02:00:50Z ERROR coredns [ERROR] plugin/errors: 2 ledger.internal. A: read udp 10.0.4.12:51022->10.0.0.2:53: i/o timeout
+2026-09-14T02:00:51Z INFO coredns GET /healthz 200 2ms
+2026-09-14T02:00:54Z INFO ledger-client scheduled job heartbeat ok
+2026-09-14T02:00:55Z ERROR ledger-client dial tcp: lookup ledger.internal on 10.96.0.10:53: read udp: i/o timeout
+2026-09-14T02:01:10Z ERROR statements-svc dial tcp: lookup ledger.internal on 10.96.0.10:53: no such host (SERVFAIL)
+2026-09-14T02:01:16Z INFO ledger-client payment authorised card=4111 1111 1111 7271 amount=42.10 status=ok
+2026-09-14T02:01:24Z INFO statements-svc scheduled job heartbeat ok
+2026-09-14T02:01:24Z INFO coredns GC pause young 8ms
+2026-09-14T02:01:30Z WARN statements-svc request to ledger.internal failed, retrying in 2s
+2026-09-14T02:01:42Z INFO statements-svc GET /healthz 200 2ms
+2026-09-14T02:02:03Z INFO coredns user login ok email=jordan20@example.com src_ip=203.0.113.29
+2026-09-14T02:02:10Z ERROR coredns [ERROR] plugin/forward: no healthy upstreams for zone internal.
+2026-09-14T02:02:17Z INFO ledger-client GC pause young 8ms
+2026-09-14T02:02:37Z INFO statements-svc user login ok email=jordan35@example.com src_ip=203.0.113.97
+2026-09-14T02:02:38Z INFO statements-svc user login ok email=sam49@example.com src_ip=203.0.113.96
+2026-09-14T02:02:38Z INFO coredns payment authorised card=4111 1111 1111 2139 amount=42.10 status=ok
+2026-09-14T02:02:47Z INFO coredns user login ok email=jordan68@example.com src_ip=203.0.113.222
+2026-09-14T02:02:50Z INFO coredns GET /healthz 200 2ms
+2026-09-14T02:02:59Z INFO statements-svc payment authorised card=4111 1111 1111 8170 amount=42.10 status=ok
+2026-09-14T02:03:15Z INFO ledger-client GET /healthz 200 2ms
+2026-09-14T02:03:37Z INFO statements-svc user login ok email=omar39@example.com src_ip=203.0.113.151
+2026-09-14T02:03:46Z INFO ledger-client cache hit ratio=0.85
+2026-09-14T02:03:51Z INFO coredns scheduled job heartbeat ok
+2026-09-14T02:04:06Z INFO ledger-client cache hit ratio=0.97
+2026-09-14T02:04:22Z INFO statements-svc GC pause young 8ms
+2026-09-14T02:04:25Z INFO ledger-client request completed status=200 path=/v1/ledger duration_ms=88
+2026-09-14T02:04:37Z INFO ledger-client GET /healthz 200 2ms
+2026-09-14T02:04:42Z INFO ledger-client cache hit ratio=0.93
+2026-09-14T02:04:46Z INFO statements-svc request completed status=200 path=/v1/statements duration_ms=17
+2026-09-14T02:04:59Z INFO ledger-client user login ok email=omar2@example.com src_ip=203.0.113.31
+2026-09-14T02:05:00Z INFO statements-svc GC pause young 8ms
+2026-09-14T02:05:23Z INFO statements-svc user login ok email=li51@example.com src_ip=203.0.113.111
+2026-09-14T02:05:31Z INFO statements-svc GC pause young 8ms
+2026-09-14T02:05:56Z INFO coredns request completed status=200 path=/v1/coredns duration_ms=63
+2026-09-14T02:06:09Z INFO statements-svc GC pause young 8ms
+2026-09-14T02:06:41Z INFO ledger-client cache hit ratio=0.85
+2026-09-14T02:07:04Z INFO statements-svc GET /healthz 200 2ms
+2026-09-14T02:07:13Z INFO statements-svc payment authorised card=4111 1111 1111 2658 amount=42.10 status=ok
+2026-09-14T02:07:31Z INFO ledger-client request completed status=200 path=/v1/ledger duration_ms=81
+2026-09-14T02:07:46Z INFO statements-svc user login ok email=li73@example.com src_ip=203.0.113.1
+2026-09-14T02:07:57Z INFO coredns GC pause young 8ms

@@ -1,0 +1,8 @@
+id: inc-009-rate-limit
+title: Credit checks failing intermittently
+alerts:
+- ts: '2026-09-14T02:02:20Z'
+  name: BureauAdapterErrorRatio
+  service: bureau-adapter
+  severity: page
+  summary: error ratio above 10%

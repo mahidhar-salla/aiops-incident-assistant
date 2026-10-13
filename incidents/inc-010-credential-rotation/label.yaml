@@ -1,0 +1,6 @@
+category: credential_rotation
+root_cause: The billing database password was rotated, but billing-svc kept the old value; logins failed.
+key_lines:
+- L2
+- L10
+- L11

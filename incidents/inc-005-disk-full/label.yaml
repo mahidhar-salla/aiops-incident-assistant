@@ -1,0 +1,7 @@
+category: disk_full
+root_cause: The export worker's data volume filled up because rotated temp files were never cleaned up.
+key_lines:
+- L19
+- L24
+- L25
+- L30

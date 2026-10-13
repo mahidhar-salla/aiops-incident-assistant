@@ -1,0 +1,8 @@
+id: inc-011-noise-only
+title: Single short alert, no clear incident
+alerts:
+- ts: '2026-09-14T02:03:30Z'
+  name: SearchApiLatencyBlip
+  service: search-api
+  severity: ticket
+  summary: p99 above 1s for 1m (resolved)

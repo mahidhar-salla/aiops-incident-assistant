@@ -1,0 +1,8 @@
+id: inc-008-dependency-timeout
+title: Loan applications slow, some failing
+alerts:
+- ts: '2026-09-14T02:02:30Z'
+  name: ApplicationApiLatencyHigh
+  service: application-api
+  severity: page
+  summary: p95 above 3s for 5m

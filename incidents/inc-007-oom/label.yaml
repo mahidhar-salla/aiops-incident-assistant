@@ -1,0 +1,7 @@
+category: oom_kill
+root_cause: quote-svc leaked memory in an unbounded in-process cache; pods hit the 1GiB limit and were OOMKilled.
+key_lines:
+- L4
+- L17
+- L20
+- L24

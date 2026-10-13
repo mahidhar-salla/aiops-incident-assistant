@@ -1,0 +1,8 @@
+id: inc-006-kafka-lag
+title: Notifications delayed by up to 40 minutes
+alerts:
+- ts: '2026-09-14T02:05:20Z'
+  name: KafkaConsumerGroupLagHigh
+  service: notify-consumer
+  severity: page
+  summary: lag above 100k for 10m

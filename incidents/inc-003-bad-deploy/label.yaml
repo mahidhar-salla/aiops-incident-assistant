@@ -1,0 +1,8 @@
+category: bad_deploy
+root_cause: accounts-api release 2.14.0 removed a default for the currency field; requests without it raise KeyError.
+key_lines:
+- L12
+- L15
+- L17
+- L22
+- L26

@@ -1,0 +1,7 @@
+category: dns_failure
+root_cause: Cluster DNS (coredns) could not reach its upstream resolver; lookups of ledger.internal timed out.
+key_lines:
+- L5
+- L8
+- L9
+- L16

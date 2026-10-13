@@ -1,0 +1,7 @@
+category: db_pool_exhaustion
+root_cause: orders-api exhausted its database connection pool (max 50); requests queued then timed out.
+key_lines:
+- L31
+- L32
+- L36
+- L44

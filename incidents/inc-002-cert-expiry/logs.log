@@ -1,0 +1,44 @@
+2026-09-14T02:00:03Z INFO partner-proxy request completed status=200 path=/v1/partner duration_ms=59
+2026-09-14T02:00:08Z INFO partner-proxy scheduled job heartbeat ok
+2026-09-14T02:00:16Z INFO payments-gateway GC pause young 8ms
+2026-09-14T02:00:18Z INFO payments-gateway scheduled job heartbeat ok
+2026-09-14T02:00:36Z INFO partner-proxy scheduled job heartbeat ok
+2026-09-14T02:00:41Z INFO payments-gateway request completed status=200 path=/v1/payments duration_ms=65
+2026-09-14T02:00:51Z INFO partner-proxy cache hit ratio=0.90
+2026-09-14T02:00:58Z INFO payments-gateway user login ok email=li7@example.com src_ip=203.0.113.158
+2026-09-14T02:01:00Z ERROR payments-gateway x509: certificate has expired or is not yet valid: current time 2026-09-14T02:01:00Z is after 2026-09-14T00:00:00Z
+2026-09-14T02:01:01Z ERROR partner-proxy TLS handshake error from payments-gateway: remote error: tls: bad certificate
+2026-09-14T02:01:13Z INFO payments-gateway scheduled job heartbeat ok
+2026-09-14T02:01:24Z INFO payments-gateway request completed status=200 path=/v1/payments duration_ms=73
+2026-09-14T02:01:30Z INFO payments-gateway request completed status=200 path=/v1/payments duration_ms=38
+2026-09-14T02:02:00Z WARN payments-gateway retrying partner call attempt=3 err=tls handshake failure
+2026-09-14T02:02:23Z INFO payments-gateway GC pause young 8ms
+2026-09-14T02:02:39Z INFO partner-proxy scheduled job heartbeat ok
+2026-09-14T02:02:58Z INFO partner-proxy user login ok email=jordan20@example.com src_ip=203.0.113.70
+2026-09-14T02:03:00Z ERROR payments-gateway x509: certificate has expired or is not yet valid: current time 2026-09-14T02:03:00Z is after 2026-09-14T00:00:00Z
+2026-09-14T02:03:03Z INFO partner-proxy user login ok email=maria92@example.com src_ip=203.0.113.30
+2026-09-14T02:03:14Z INFO payments-gateway GC pause young 8ms
+2026-09-14T02:03:57Z INFO partner-proxy cache hit ratio=0.99
+2026-09-14T02:04:13Z INFO partner-proxy request completed status=200 path=/v1/partner duration_ms=62
+2026-09-14T02:04:26Z INFO payments-gateway payment authorised card=4111 1111 1111 9882 amount=42.10 status=ok
+2026-09-14T02:04:28Z INFO partner-proxy scheduled job heartbeat ok
+2026-09-14T02:04:52Z INFO payments-gateway request completed status=200 path=/v1/payments duration_ms=88
+2026-09-14T02:04:58Z INFO partner-proxy user login ok email=priya60@example.com src_ip=203.0.113.122
+2026-09-14T02:05:00Z INFO partner-proxy request completed status=200 path=/v1/partner duration_ms=79
+2026-09-14T02:05:05Z INFO payments-gateway GET /healthz 200 2ms
+2026-09-14T02:05:10Z INFO partner-proxy cache hit ratio=0.81
+2026-09-14T02:05:18Z INFO payments-gateway payment authorised card=4111 1111 1111 2135 amount=42.10 status=ok
+2026-09-14T02:05:52Z INFO payments-gateway cache hit ratio=0.90
+2026-09-14T02:05:52Z INFO partner-proxy request completed status=200 path=/v1/partner duration_ms=60
+2026-09-14T02:05:56Z INFO payments-gateway scheduled job heartbeat ok
+2026-09-14T02:05:57Z INFO payments-gateway GC pause young 8ms
+2026-09-14T02:06:25Z INFO partner-proxy cache hit ratio=0.96
+2026-09-14T02:06:51Z INFO payments-gateway GET /healthz 200 2ms
+2026-09-14T02:06:52Z INFO partner-proxy payment authorised card=4111 1111 1111 2558 amount=42.10 status=ok
+2026-09-14T02:07:01Z INFO partner-proxy scheduled job heartbeat ok
+2026-09-14T02:07:11Z INFO partner-proxy user login ok email=chen44@example.com src_ip=203.0.113.182
+2026-09-14T02:07:18Z INFO partner-proxy GC pause young 8ms
+2026-09-14T02:07:25Z INFO payments-gateway request completed status=200 path=/v1/payments duration_ms=26
+2026-09-14T02:07:34Z INFO partner-proxy user login ok email=alex48@example.com src_ip=203.0.113.167
+2026-09-14T02:07:37Z INFO payments-gateway scheduled job heartbeat ok
+2026-09-14T02:07:52Z INFO payments-gateway request completed status=200 path=/v1/payments duration_ms=21

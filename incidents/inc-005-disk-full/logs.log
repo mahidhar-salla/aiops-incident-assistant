@@ -1,0 +1,44 @@
+2026-09-14T02:00:08Z INFO export-worker request completed status=200 path=/v1/export duration_ms=36
+2026-09-14T02:00:11Z INFO node-exporter scheduled job heartbeat ok
+2026-09-14T02:00:28Z INFO node-exporter GET /healthz 200 2ms
+2026-09-14T02:00:38Z INFO export-worker GET /healthz 200 2ms
+2026-09-14T02:00:38Z INFO export-worker cache hit ratio=0.86
+2026-09-14T02:00:47Z INFO export-worker GET /healthz 200 2ms
+2026-09-14T02:00:56Z INFO export-worker GET /healthz 200 2ms
+2026-09-14T02:01:06Z INFO node-exporter GET /healthz 200 2ms
+2026-09-14T02:01:18Z INFO node-exporter GC pause young 8ms
+2026-09-14T02:01:22Z INFO node-exporter user login ok email=sam91@example.com src_ip=203.0.113.243
+2026-09-14T02:01:54Z INFO node-exporter request completed status=200 path=/v1/node duration_ms=14
+2026-09-14T02:01:58Z INFO node-exporter scheduled job heartbeat ok
+2026-09-14T02:02:21Z INFO export-worker payment authorised card=4111 1111 1111 1229 amount=42.10 status=ok
+2026-09-14T02:02:30Z INFO node-exporter scheduled job heartbeat ok
+2026-09-14T02:02:36Z INFO export-worker cache hit ratio=0.98
+2026-09-14T02:02:50Z INFO node-exporter payment authorised card=4111 1111 1111 2638 amount=42.10 status=ok
+2026-09-14T02:02:58Z INFO node-exporter scheduled job heartbeat ok
+2026-09-14T02:03:19Z INFO node-exporter user login ok email=jordan68@example.com src_ip=203.0.113.78
+2026-09-14T02:03:20Z WARN export-worker temp dir /var/lib/export/tmp size=46.2GiB files=18211
+2026-09-14T02:03:23Z INFO export-worker scheduled job heartbeat ok
+2026-09-14T02:03:35Z INFO node-exporter user login ok email=sam44@example.com src_ip=203.0.113.60
+2026-09-14T02:04:01Z INFO export-worker cache hit ratio=0.85
+2026-09-14T02:04:12Z INFO export-worker cache hit ratio=0.89
+2026-09-14T02:04:20Z ERROR export-worker write /var/lib/export/tmp/rpt-8812.csv: no space left on device
+2026-09-14T02:04:22Z ERROR export-worker job rpt-8812 failed: OSError: [Errno 28] No space left on device
+2026-09-14T02:04:37Z INFO node-exporter request completed status=200 path=/v1/node duration_ms=78
+2026-09-14T02:04:38Z INFO node-exporter payment authorised card=4111 1111 1111 4714 amount=42.10 status=ok
+2026-09-14T02:04:50Z INFO export-worker payment authorised card=4111 1111 1111 8892 amount=42.10 status=ok
+2026-09-14T02:04:58Z INFO node-exporter cache hit ratio=0.95
+2026-09-14T02:05:00Z WARN node-exporter filesystem /var/lib/export avail=0B (100% used)
+2026-09-14T02:05:04Z INFO node-exporter cache hit ratio=0.88
+2026-09-14T02:05:10Z INFO export-worker user login ok email=li11@example.com src_ip=203.0.113.172
+2026-09-14T02:05:11Z INFO export-worker GET /healthz 200 2ms
+2026-09-14T02:05:16Z INFO export-worker user login ok email=omar23@example.com src_ip=203.0.113.83
+2026-09-14T02:05:30Z INFO node-exporter GC pause young 8ms
+2026-09-14T02:05:45Z INFO node-exporter GC pause young 8ms
+2026-09-14T02:05:49Z INFO node-exporter user login ok email=priya17@example.com src_ip=203.0.113.140
+2026-09-14T02:05:52Z INFO export-worker user login ok email=omar83@example.com src_ip=203.0.113.44
+2026-09-14T02:06:01Z INFO node-exporter scheduled job heartbeat ok
+2026-09-14T02:06:25Z INFO export-worker GET /healthz 200 2ms
+2026-09-14T02:06:32Z INFO export-worker payment authorised card=4111 1111 1111 5541 amount=42.10 status=ok
+2026-09-14T02:06:58Z INFO export-worker request completed status=200 path=/v1/export duration_ms=32
+2026-09-14T02:06:58Z INFO node-exporter user login ok email=li62@example.com src_ip=203.0.113.196
+2026-09-14T02:07:45Z INFO export-worker scheduled job heartbeat ok
