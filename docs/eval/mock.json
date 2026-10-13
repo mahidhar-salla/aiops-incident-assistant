@@ -1,0 +1,965 @@
+{
+  "backend": "mock",
+  "n": 11,
+  "root_cause_accuracy": 1.0,
+  "key_evidence_rate": 1.0,
+  "citation_validity": 1.0,
+  "hallucination_free_rate": 1.0,
+  "parse_failures": 0,
+  "mean_seconds": 0.0,
+  "cases": [
+    {
+      "incident": "inc-001-db-pool",
+      "expected": "db_pool_exhaustion",
+      "got": "db_pool_exhaustion",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 14,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Orders API latency and 5xx. Errors concentrated in orders-api; pattern matches 'database connection pool exhausted'.",
+          "cites": [
+            "L31",
+            "L36",
+            "L32"
+          ]
+        },
+        "category": "db_pool_exhaustion",
+        "root_cause": {
+          "text": "Likely database connection pool exhausted. Strongest evidence: HikariPool-1 - pool stats total=50 active=50 idle=0 waiting=37",
+          "cites": [
+            "L31",
+            "L36",
+            "L32",
+            "RB:db-connection-pool#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:05:00Z",
+            "event": "orders-api: HikariPool-1 - pool stats total=50 active=50 idle=0 waiting=37",
+            "cites": [
+              "L31"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:05:30Z",
+            "event": "orders-api: HikariPool-1 - Connection is not available, request timed out after 30000ms",
+            "cites": [
+              "L32"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:05:45Z",
+            "event": "Alert OrdersApiHighLatencyP99 (page) on orders-api",
+            "cites": [
+              "A1"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:06:20Z",
+            "event": "Alert OrdersApiErrorBudgetBurn (page) on orders-api",
+            "cites": [
+              "A2"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "Compare pool active/idle/waiting over time.",
+            "cites": [
+              "RB:db-connection-pool#checks"
+            ]
+          },
+          {
+            "text": "Look for slow queries and long-running transactions on the database.",
+            "cites": [
+              "RB:db-connection-pool#checks"
+            ]
+          },
+          {
+            "text": "Check whether a recent deploy changed query patterns or transaction scope.",
+            "cites": [
+              "RB:db-connection-pool#checks"
+            ]
+          }
+        ],
+        "confidence": "high",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-002-cert-expiry",
+      "expected": "cert_expiry",
+      "got": "cert_expiry",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 14,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Partner payments failing with TLS errors. Errors concentrated in partner-proxy, payments-gateway; pattern matches 'expired or invalid tls certificate'.",
+          "cites": [
+            "L9",
+            "L18",
+            "L10"
+          ]
+        },
+        "category": "cert_expiry",
+        "root_cause": {
+          "text": "Likely expired or invalid tls certificate. Strongest evidence: x509: certificate has expired or is not yet valid: current time 2026-09-14T02:01:00Z is after 2026-09-14T00:00:00Z",
+          "cites": [
+            "L9",
+            "L18",
+            "L10",
+            "RB:tls-certificate-expiry#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:01:00Z",
+            "event": "payments-gateway: x509: certificate has expired or is not yet valid: current time 2026-09-14T02:01:00Z is after 2026-09-14T00:00",
+            "cites": [
+              "L9"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:01:30Z",
+            "event": "Alert TLSHandshakeFailuresHigh (page) on partner-proxy",
+            "cites": [
+              "A1"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:02:00Z",
+            "event": "payments-gateway: retrying partner call attempt=3 err=tls handshake failure",
+            "cites": [
+              "L14"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:02:30Z",
+            "event": "Alert BlackboxProbeFailed (ticket) on payments-gateway",
+            "cites": [
+              "A2"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "Inspect the presented certificate's notAfter with openssl s_client.",
+            "cites": [
+              "RB:tls-certificate-expiry#checks"
+            ]
+          },
+          {
+            "text": "Check the renewal job or cert-manager Certificate status.",
+            "cites": [
+              "RB:tls-certificate-expiry#checks"
+            ]
+          },
+          {
+            "text": "Confirm which side (client or server) holds the expired certificate.",
+            "cites": [
+              "RB:tls-certificate-expiry#checks"
+            ]
+          }
+        ],
+        "confidence": "high",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-003-bad-deploy",
+      "expected": "bad_deploy",
+      "got": "bad_deploy",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 14,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Accounts API 500s after release. Errors concentrated in accounts-api, deploy-controller; pattern matches 'regression introduced by a deployment'.",
+          "cites": [
+            "L26",
+            "L15",
+            "L12"
+          ]
+        },
+        "category": "bad_deploy",
+        "root_cause": {
+          "text": "Likely regression introduced by a deployment. Strongest evidence: error rate 18% over last 60s (previous revision 40 baseline 0.1%)",
+          "cites": [
+            "L26",
+            "L15",
+            "L12",
+            "RB:bad-deploy#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:01:40Z",
+            "event": "deploy-controller: rollout started deployment=accounts-api image=accounts-api:2.14.0 replicas=6",
+            "cites": [
+              "L12"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:02:55Z",
+            "event": "accounts-api: unhandled exception in GET /v1/accounts/summary: KeyError: 'currency' (version=2.14.0)",
+            "cites": [
+              "L17"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:03:50Z",
+            "event": "Alert AccountsApi5xxRatioHigh (page) on accounts-api",
+            "cites": [
+              "A1"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:04:00Z",
+            "event": "accounts-api: error rate 18% over last 60s (previous revision 40 baseline 0.1%)",
+            "cites": [
+              "L26"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "Line up the error start time with the rollout timeline.",
+            "cites": [
+              "RB:bad-deploy#checks"
+            ]
+          },
+          {
+            "text": "Confirm errors carry the new version.",
+            "cites": [
+              "RB:bad-deploy#checks"
+            ]
+          },
+          {
+            "text": "Diff the release for the failing code path.",
+            "cites": [
+              "RB:bad-deploy#checks"
+            ]
+          }
+        ],
+        "confidence": "high",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-004-dns",
+      "expected": "dns_failure",
+      "got": "dns_failure",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 14,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Ledger lookups failing across services. Errors concentrated in coredns, ledger-client, statements-svc; pattern matches 'dns resolution failures'.",
+          "cites": [
+            "L9",
+            "L8",
+            "L16"
+          ]
+        },
+        "category": "dns_failure",
+        "root_cause": {
+          "text": "Likely dns resolution failures. Strongest evidence: dial tcp: lookup ledger.internal on 10.96.0.10:53: no such host (SERVFAIL)",
+          "cites": [
+            "L9",
+            "L8",
+            "L16",
+            "RB:dns-resolution#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:00:50Z",
+            "event": "coredns: [ERROR] plugin/errors: 2 ledger.internal. A: read udp 10.0.4.12:51022->10.0.0.2:53: i/o timeout",
+            "cites": [
+              "L5"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:01:30Z",
+            "event": "statements-svc: request to ledger.internal failed, retrying in 2s",
+            "cites": [
+              "L13"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:01:40Z",
+            "event": "Alert CoreDNSForwardHealthcheckFailed (page) on coredns",
+            "cites": [
+              "A1"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:01:50Z",
+            "event": "Alert StatementsSvcErrors (ticket) on statements-svc",
+            "cites": [
+              "A2"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "\"lookup <host>.",
+            "cites": [
+              "RB:dns-resolution#symptoms"
+            ]
+          },
+          {
+            "text": "i/o timeout\", \"no such host\", SERVFAIL, or coredns logs reporting \"no healthy upstreams\".",
+            "cites": [
+              "RB:dns-resolution#symptoms"
+            ]
+          },
+          {
+            "text": "Several unrelated services fail at once when calling hosts by name.",
+            "cites": [
+              "RB:dns-resolution#symptoms"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-005-disk-full",
+      "expected": "disk_full",
+      "got": "disk_full",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 13,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Report exports failing. Errors concentrated in export-worker, node-exporter; pattern matches 'disk or volume out of space'.",
+          "cites": [
+            "L25",
+            "L30",
+            "L19"
+          ]
+        },
+        "category": "disk_full",
+        "root_cause": {
+          "text": "Likely disk or volume out of space. Strongest evidence: job rpt-8812 failed: OSError: [Errno 28] No space left on device",
+          "cites": [
+            "L25",
+            "L30",
+            "L19",
+            "RB:disk-full#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:03:20Z",
+            "event": "export-worker: temp dir /var/lib/export/tmp size=46.2GiB files=18211",
+            "cites": [
+              "L19"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:04:00Z",
+            "event": "Alert NodeFilesystemAlmostOutOfSpace (ticket) on node-exporter",
+            "cites": [
+              "A1"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:04:20Z",
+            "event": "export-worker: write /var/lib/export/tmp/rpt-8812.csv: no space left on device",
+            "cites": [
+              "L24"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:05:10Z",
+            "event": "Alert ExportJobsFailing (page) on export-worker",
+            "cites": [
+              "A2"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "\"no space left on device\", \"Errno 28\", filesystem avail=0B or 100% used.",
+            "cites": [
+              "RB:disk-full#symptoms"
+            ]
+          },
+          {
+            "text": "Writes and jobs fail while reads may still work.",
+            "cites": [
+              "RB:disk-full#symptoms"
+            ]
+          }
+        ],
+        "confidence": "high",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-006-kafka-lag",
+      "expected": "kafka_consumer_lag",
+      "got": "kafka_consumer_lag",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 13,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Notifications delayed by up to 40 minutes. Errors concentrated in kafka-broker, notify-consumer; pattern matches 'kafka consumer lag / stalled consumers'.",
+          "cites": [
+            "L11",
+            "L24",
+            "L12"
+          ]
+        },
+        "category": "kafka_consumer_lag",
+        "root_cause": {
+          "text": "Likely kafka consumer lag / stalled consumers. Strongest evidence: consumer poll timeout has expired: time between poll() calls exceeded max.poll.interval.ms=300000",
+          "cites": [
+            "L11",
+            "L24",
+            "L12",
+            "RB:kafka-consumer-lag#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:02:00Z",
+            "event": "notify-consumer: consumer poll timeout has expired: time between poll() calls exceeded max.poll.interval.ms=300000",
+            "cites": [
+              "L11"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:02:05Z",
+            "event": "kafka-broker: group notify-consumers rebalancing: member notify-consumer-3 left (poll timeout)",
+            "cites": [
+              "L12"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:05:20Z",
+            "event": "Alert KafkaConsumerGroupLagHigh (page) on notify-consumer",
+            "cites": [
+              "A1"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "Plot lag per partition and the rebalance rate.",
+            "cites": [
+              "RB:kafka-consumer-lag#checks"
+            ]
+          },
+          {
+            "text": "Compare batch processing time to max.",
+            "cites": [
+              "RB:kafka-consumer-lag#checks"
+            ]
+          },
+          {
+            "text": "poll.",
+            "cites": [
+              "RB:kafka-consumer-lag#checks"
+            ]
+          }
+        ],
+        "confidence": "high",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-007-oom",
+      "expected": "oom_kill",
+      "got": "oom_kill",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 13,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Quote service restarting repeatedly. Errors concentrated in kubelet, quote-svc; pattern matches 'memory leak leading to oomkilled containers'.",
+          "cites": [
+            "L4",
+            "L17",
+            "L20"
+          ]
+        },
+        "category": "oom_kill",
+        "root_cause": {
+          "text": "Likely memory leak leading to oomkilled containers. Strongest evidence: heap usage 812MiB of 1024MiB limit, cache entries=1940221",
+          "cites": [
+            "L4",
+            "L17",
+            "L20",
+            "RB:oom-kill#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:01:40Z",
+            "event": "quote-svc: heap usage 812MiB of 1024MiB limit, cache entries=1940221",
+            "cites": [
+              "L4"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:04:00Z",
+            "event": "kubelet: container quote-svc in pod quote-svc-7d9f exited: OOMKilled (exit code 137)",
+            "cites": [
+              "L20"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:04:20Z",
+            "event": "Alert KubePodCrashLooping (page) on quote-svc",
+            "cites": [
+              "A1"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "Graph container working-set memory against the limit across restarts.",
+            "cites": [
+              "RB:oom-kill#checks"
+            ]
+          },
+          {
+            "text": "Look for growing object counts (cache entries, queues).",
+            "cites": [
+              "RB:oom-kill#checks"
+            ]
+          },
+          {
+            "text": "Take a heap profile on a non-production replica.",
+            "cites": [
+              "RB:oom-kill#checks"
+            ]
+          }
+        ],
+        "confidence": "high",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-008-dependency-timeout",
+      "expected": "dependency_timeout",
+      "got": "dependency_timeout",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 13,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Loan applications slow, some failing. Errors concentrated in application-api, fraud-score; pattern matches 'slow downstream dependency causing timeouts'.",
+          "cites": [
+            "L10",
+            "L16",
+            "L12"
+          ]
+        },
+        "category": "dependency_timeout",
+        "root_cause": {
+          "text": "Likely slow downstream dependency causing timeouts. Strongest evidence: p99 latency 9120ms over last 5m (normal ~180ms)",
+          "cites": [
+            "L10",
+            "L16",
+            "L12",
+            "RB:dependency-timeout#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:01:40Z",
+            "event": "fraud-score: p99 latency 9120ms over last 5m (normal ~180ms)",
+            "cites": [
+              "L10"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:02:10Z",
+            "event": "application-api: call to fraud-score timed out after 5000ms path=/v1/score",
+            "cites": [
+              "L12"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:02:30Z",
+            "event": "Alert ApplicationApiLatencyHigh (page) on application-api",
+            "cites": [
+              "A1"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "\"timed out after.",
+            "cites": [
+              "RB:dependency-timeout#symptoms"
+            ]
+          },
+          {
+            "text": "ms\" when calling a specific downstream; circuit breaker OPEN; the downstream's own latency well above normal.",
+            "cites": [
+              "RB:dependency-timeout#symptoms"
+            ]
+          },
+          {
+            "text": "The caller's errors follow the downstream's latency.",
+            "cites": [
+              "RB:dependency-timeout#symptoms"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-009-rate-limit",
+      "expected": "upstream_rate_limit",
+      "got": "upstream_rate_limit",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 14,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Credit checks failing intermittently. Errors concentrated in bureau-adapter; pattern matches 'upstream api rate limiting (http 429)'.",
+          "cites": [
+            "L9",
+            "L8",
+            "L17"
+          ]
+        },
+        "category": "upstream_rate_limit",
+        "root_cause": {
+          "text": "Likely upstream api rate limiting (http 429). Strongest evidence: credit check failed after 3 retries: HTTP 429 quota exceeded",
+          "cites": [
+            "L9",
+            "L8",
+            "L17",
+            "RB:upstream-rate-limit#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:00:40Z",
+            "event": "batch-scheduler: manual re-run started job=nightly-rescore records=120000",
+            "cites": [
+              "L4"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:01:30Z",
+            "event": "bureau-adapter: upstream bureau-api responded 429 Too Many Requests retry-after=60",
+            "cites": [
+              "L8"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:01:35Z",
+            "event": "bureau-adapter: credit check failed after 3 retries: HTTP 429 quota exceeded",
+            "cites": [
+              "L9"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:02:20Z",
+            "event": "Alert BureauAdapterErrorRatio (page) on bureau-adapter",
+            "cites": [
+              "A1"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "Correlate 429s with batch jobs or traffic changes.",
+            "cites": [
+              "RB:upstream-rate-limit#checks"
+            ]
+          },
+          {
+            "text": "Check the quota and current usage with the provider.",
+            "cites": [
+              "RB:upstream-rate-limit#checks"
+            ]
+          },
+          {
+            "text": "Review retry and backoff settings.",
+            "cites": [
+              "RB:upstream-rate-limit#checks"
+            ]
+          }
+        ],
+        "confidence": "high",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-010-credential-rotation",
+      "expected": "credential_rotation",
+      "got": "credential_rotation",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 14,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Billing service cannot reach its database. Errors concentrated in billing-svc, postgres-billing, secrets-operator; pattern matches 'credential rotated without the consumer being updated'.",
+          "cites": [
+            "L2",
+            "L11",
+            "L10"
+          ]
+        },
+        "category": "credential_rotation",
+        "root_cause": {
+          "text": "Likely credential rotated without the consumer being updated. Strongest evidence: rotated secret billing-db-credentials version=7",
+          "cites": [
+            "L2",
+            "L11",
+            "L10",
+            "RB:credential-rotation#symptoms"
+          ]
+        },
+        "timeline": [
+          {
+            "ts": "2026-09-14T02:00:30Z",
+            "event": "secrets-operator: rotated secret billing-db-credentials version=7",
+            "cites": [
+              "L2"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:01:30Z",
+            "event": "postgres-billing: FATAL: password authentication failed for user \"billing_app\"",
+            "cites": [
+              "L10"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:02:00Z",
+            "event": "billing-svc: connection pool has 0 healthy connections, retrying",
+            "cites": [
+              "L13"
+            ]
+          },
+          {
+            "ts": "2026-09-14T02:02:30Z",
+            "event": "Alert BillingSvcDown (page) on billing-svc",
+            "cites": [
+              "A1"
+            ]
+          }
+        ],
+        "next_checks": [
+          {
+            "text": "Line up the rotation event with the first auth failure.",
+            "cites": [
+              "RB:credential-rotation#checks"
+            ]
+          },
+          {
+            "text": "Confirm which secret version the app has mounted.",
+            "cites": [
+              "RB:credential-rotation#checks"
+            ]
+          },
+          {
+            "text": "Check whether the app supports hot reload of credentials.",
+            "cites": [
+              "RB:credential-rotation#checks"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "backend": "mock",
+        "parse_error": null
+      }
+    },
+    {
+      "incident": "inc-011-noise-only",
+      "expected": "unknown",
+      "got": "unknown",
+      "root_cause_match": true,
+      "key_evidence_cited": true,
+      "citation_validity": 1.0,
+      "hallucination_free": true,
+      "uncited_claims": 0,
+      "parse_error": null,
+      "seconds": 0.0,
+      "grounding": {
+        "total_cites": 6,
+        "invalid_cites": [],
+        "uncited_claims": 0,
+        "unsupported_numbers": [],
+        "unsupported_identifiers": [],
+        "bad_timestamps": []
+      },
+      "brief": {
+        "summary": {
+          "text": "Single short alert, no clear incident: no ERROR lines and no paging alert in the evidence.",
+          "cites": [
+            "L21",
+            "A1"
+          ]
+        },
+        "category": "unknown",
+        "root_cause": {
+          "text": "Not enough evidence to name a root cause.",
+          "cites": [
+            "L21",
+            "A1"
+          ]
+        },
+        "timeline": [],
+        "next_checks": [
+          {
+            "text": "Confirm whether the alert is still firing before escalating.",
+            "cites": [
+              "L21",
+              "A1"
+            ]
+          }
+        ],
+        "confidence": "low",
+        "backend": "mock",
+        "parse_error": null
+      }
+    }
+  ]
+}
