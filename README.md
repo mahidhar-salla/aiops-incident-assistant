@@ -107,7 +107,7 @@ What it does: reads logs and alerts you give it, redacts them, and writes a draf
 
 ## Why I built this
 
-As a Senior Site Reliability Engineer at a regulated lender, I've led root-cause analysis across application, TLS and network layers, and I've built LLM agents for operational workflows. The evidence is usually there; it's just scattered, and an AI summary is only useful if you can check it quickly. This is a public, from-scratch take on that problem: synthetic data and generic runbooks only, no employer or client code, configuration, data or names.
+As a Senior Site Reliability Engineer at a regulated lender, I've led root-cause analysis across application, TLS and network layers, and I've built reusable LLM agents for operational workflows. The evidence is usually there; it's just scattered, and an AI summary is only useful if you can check it quickly. This is a public, from-scratch take on that problem: synthetic data and generic runbooks only, no employer or client code, configuration, data or names.
 
 ## Layout
 
@@ -124,4 +124,4 @@ Auto-remediation, paging integrations, or anything that acts on production. See 
 
 ## License
 
-[MIT](LICENSE) © 2026 Mahidhar Chowdhary Salla
+[MIT](LICENSE) © 2026 Mahidhar Salla
