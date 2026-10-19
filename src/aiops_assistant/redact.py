@@ -22,7 +22,9 @@ PATTERNS: list[tuple[str, re.Pattern[str]]] = [
             r"[\"']?\s*[:=]\s*[\"']?)([^\s\"',;}]+)"
         ),
     ),
-    ("CARD", re.compile(r"\b(?:\d[ -]?){13,19}\b")),
+    # 13-19 digits, optionally grouped. Only redacted when it starts like a major card network (2-6) and passes
+    # Luhn; that keeps epoch-millisecond timestamps (13 digits starting with 1) and other long ids intact.
+    ("CARD", re.compile(r"\b\d(?:[ -]?\d){12,18}\b")),
     ("SIN_SSN", re.compile(r"\b\d{3}-\d{2,3}-\d{3,4}\b")),
     # Canadian SINs are often written with spaces ("046 454 286"). Three spaced digit groups are common in
     # ordinary logs, so this form is only redacted when it passes the SIN check digit (Luhn).
@@ -53,6 +55,10 @@ def redact(text: str) -> tuple[str, dict[str, int]]:
         def _f(m: re.Match[str]) -> str:
             if kind == "IPV4" and _PRIVATE.match(m.group(0)):
                 return m.group(0)
+            if kind == "CARD":
+                digits = re.sub(r"[ -]", "", m.group(0))
+                if digits[0] not in "23456" or not luhn_ok(digits):
+                    return m.group(0)
             if kind == "SIN_SSN" and " " in m.group(0) and not luhn_ok(m.group(0).replace(" ", "")):
                 return m.group(0)
             if kind in ("SECRET", "BASIC"):

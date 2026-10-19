@@ -34,7 +34,7 @@
 2026-09-14T02:05:57Z INFO payments-gateway GC pause young 8ms
 2026-09-14T02:06:25Z INFO partner-proxy cache hit ratio=0.96
 2026-09-14T02:06:51Z INFO payments-gateway GET /healthz 200 2ms
-2026-09-14T02:06:52Z INFO partner-proxy payment authorised card=4111 1111 1111 2558 amount=42.10 status=ok
+2026-09-14T02:06:52Z INFO partner-proxy payment authorised card=4111 1111 1111 2556 amount=42.10 status=ok
 2026-09-14T02:07:01Z INFO partner-proxy scheduled job heartbeat ok
 2026-09-14T02:07:11Z INFO partner-proxy user login ok email=chen44@example.com src_ip=203.0.113.182
 2026-09-14T02:07:18Z INFO partner-proxy GC pause young 8ms

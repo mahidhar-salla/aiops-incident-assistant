@@ -8,19 +8,19 @@
 2026-09-14T02:01:30Z WARN bureau-adapter upstream bureau-api responded 429 Too Many Requests retry-after=60
 2026-09-14T02:01:35Z ERROR bureau-adapter credit check failed after 3 retries: HTTP 429 quota exceeded
 2026-09-14T02:01:38Z INFO bureau-adapter scheduled job heartbeat ok
-2026-09-14T02:01:39Z INFO batch-scheduler payment authorised card=4111 1111 1111 3247 amount=42.10 status=ok
+2026-09-14T02:01:39Z INFO batch-scheduler payment authorised card=4111 1111 1111 3240 amount=42.10 status=ok
 2026-09-14T02:01:41Z INFO bureau-adapter request completed status=200 path=/v1/bureau duration_ms=36
 2026-09-14T02:01:43Z INFO bureau-adapter user login ok email=priya44@example.com src_ip=203.0.113.208
 2026-09-14T02:01:44Z INFO bureau-adapter cache hit ratio=0.85
 2026-09-14T02:02:15Z INFO batch-scheduler request completed status=200 path=/v1/batch duration_ms=67
-2026-09-14T02:02:18Z INFO bureau-adapter payment authorised card=4111 1111 1111 8012 amount=42.10 status=ok
+2026-09-14T02:02:18Z INFO bureau-adapter payment authorised card=4111 1111 1111 8017 amount=42.10 status=ok
 2026-09-14T02:02:30Z WARN bureau-adapter upstream bureau-api responded 429 Too Many Requests retry-after=60
 2026-09-14T02:02:37Z INFO bureau-adapter user login ok email=priya5@example.com src_ip=203.0.113.17
 2026-09-14T02:02:43Z INFO batch-scheduler request completed status=200 path=/v1/batch duration_ms=88
-2026-09-14T02:02:51Z INFO batch-scheduler payment authorised card=4111 1111 1111 3988 amount=42.10 status=ok
+2026-09-14T02:02:51Z INFO batch-scheduler payment authorised card=4111 1111 1111 3984 amount=42.10 status=ok
 2026-09-14T02:03:02Z INFO bureau-adapter user login ok email=chen46@example.com src_ip=203.0.113.1
 2026-09-14T02:03:05Z INFO bureau-adapter payment authorised card=4111 1111 1111 5294 amount=42.10 status=ok
-2026-09-14T02:03:07Z INFO batch-scheduler payment authorised card=4111 1111 1111 4137 amount=42.10 status=ok
+2026-09-14T02:03:07Z INFO batch-scheduler payment authorised card=4111 1111 1111 4131 amount=42.10 status=ok
 2026-09-14T02:03:11Z INFO bureau-adapter GC pause young 8ms
 2026-09-14T02:03:14Z INFO bureau-adapter GET /healthz 200 2ms
 2026-09-14T02:03:25Z INFO bureau-adapter payment authorised card=4111 1111 1111 6789 amount=42.10 status=ok
@@ -35,8 +35,8 @@
 2026-09-14T02:06:50Z INFO bureau-adapter scheduled job heartbeat ok
 2026-09-14T02:06:54Z INFO batch-scheduler GC pause young 8ms
 2026-09-14T02:06:57Z INFO bureau-adapter user login ok email=omar45@example.com src_ip=203.0.113.210
-2026-09-14T02:07:00Z INFO bureau-adapter payment authorised card=4111 1111 1111 7347 amount=42.10 status=ok
-2026-09-14T02:07:02Z INFO batch-scheduler payment authorised card=4111 1111 1111 1737 amount=42.10 status=ok
+2026-09-14T02:07:00Z INFO bureau-adapter payment authorised card=4111 1111 1111 7340 amount=42.10 status=ok
+2026-09-14T02:07:02Z INFO batch-scheduler payment authorised card=4111 1111 1111 1731 amount=42.10 status=ok
 2026-09-14T02:07:06Z INFO bureau-adapter GC pause young 8ms
 2026-09-14T02:07:25Z INFO bureau-adapter GC pause young 8ms
 2026-09-14T02:07:28Z INFO bureau-adapter user login ok email=priya62@example.com src_ip=203.0.113.90

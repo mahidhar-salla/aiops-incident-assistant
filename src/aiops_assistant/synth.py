@@ -13,6 +13,8 @@ from pathlib import Path
 
 import yaml
 
+from .redact import luhn_ok
+
 # (offset seconds from start, level, service, message, is_key_evidence)
 Event = tuple[int, str, str, str, bool]
 # (offset seconds, alert name, service, severity, summary)
@@ -315,6 +317,13 @@ def _ts(start: datetime, offset: int) -> str:
     return (start + timedelta(seconds=offset)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _test_card(n: int) -> str:
+    """A Luhn-valid 4111 test card number, so the redactor treats it like a real one."""
+    body = f"411111111111{n // 10:03d}"
+    check = next(d for d in "0123456789" if luhn_ok(body + d))
+    return f"{body[:4]} {body[4:8]} {body[8:12]} {body[12:]}{check}"
+
+
 def build(s: Scenario) -> tuple[list[str], list[dict[str, str]], dict[str, object], dict[str, object]]:
     rng = random.Random(s.id)
     start = datetime.strptime(s.start, "%Y-%m-%dT%H:%M:%SZ")
@@ -327,7 +336,7 @@ def build(s: Scenario) -> tuple[list[str], list[dict[str, str]], dict[str, objec
             r=rng.randint(80, 99),
             email=f"{rng.choice(NAMES)}{rng.randint(1, 99)}@example.com",
             ip=f"203.0.113.{rng.randint(1, 254)}",
-            card=f"4111 1111 1111 {rng.randint(1000, 9999)}",
+            card=_test_card(rng.randint(1000, 9999)),
         )
         rows.append((rng.randint(0, 480), "INFO", svc, msg, False))
     rows += list(s.events)

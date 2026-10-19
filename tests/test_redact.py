@@ -3,7 +3,7 @@ from aiops_assistant.redact import redact
 
 def test_scrubs_pii_and_secrets():
     text = (
-        "user login ok email=sam12@example.com src_ip=203.0.113.9 card=4111 1111 1111 1234 "
+        "user login ok email=sam12@example.com src_ip=203.0.113.9 card=4111 1111 1111 1111 "
         "password=hunter2 Authorization: Bearer abcdefghijklmnop key AKIAABCDEFGHIJKLMNOP"
     )
     out, counts = redact(text)
@@ -47,5 +47,18 @@ def test_scrubs_sin_written_with_spaces():
 
 def test_keeps_spaced_numbers_that_are_not_sins():
     text = "batch sizes 100 200 300 processed"
+    out, counts = redact(text)
+    assert out == text and counts == {}
+
+
+def test_card_needs_valid_luhn():
+    out, counts = redact("card=4111-1111-1111-1111 ref=4111111111111234")
+    assert "4111-1111-1111-1111" not in out and "ref=4111111111111234" in out
+    assert counts == {"CARD": 1}
+
+
+def test_keeps_epoch_ms_timestamps():
+    # 1760918400000 fails Luhn; 1760918400001 passes it but cannot be a card (starts with 1).
+    text = "ts=1760918400000 retry_at=1760918400001 order=1234567890123"
     out, counts = redact(text)
     assert out == text and counts == {}

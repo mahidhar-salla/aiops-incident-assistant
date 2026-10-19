@@ -11,7 +11,7 @@
 2026-09-14T02:01:55Z INFO fraud-score GC pause young 8ms
 2026-09-14T02:02:10Z ERROR application-api call to fraud-score timed out after 5000ms path=/v1/score
 2026-09-14T02:02:11Z INFO fraud-score scheduled job heartbeat ok
-2026-09-14T02:02:23Z INFO application-api payment authorised card=4111 1111 1111 4195 amount=42.10 status=ok
+2026-09-14T02:02:23Z INFO application-api payment authorised card=4111 1111 1111 4198 amount=42.10 status=ok
 2026-09-14T02:02:34Z INFO fraud-score user login ok email=priya36@example.com src_ip=203.0.113.145
 2026-09-14T02:02:40Z ERROR application-api circuit breaker fraud-score OPEN after 50% failures in 20 calls
 2026-09-14T02:02:46Z INFO application-api payment authorised card=4111 1111 1111 5575 amount=42.10 status=ok
@@ -23,8 +23,8 @@
 2026-09-14T02:03:22Z INFO application-api GET /healthz 200 2ms
 2026-09-14T02:03:30Z INFO application-api cache hit ratio=0.94
 2026-09-14T02:03:40Z INFO application-api payment authorised card=4111 1111 1111 5922 amount=42.10 status=ok
-2026-09-14T02:03:56Z INFO fraud-score payment authorised card=4111 1111 1111 1271 amount=42.10 status=ok
-2026-09-14T02:04:17Z INFO fraud-score payment authorised card=4111 1111 1111 4781 amount=42.10 status=ok
+2026-09-14T02:03:56Z INFO fraud-score payment authorised card=4111 1111 1111 1277 amount=42.10 status=ok
+2026-09-14T02:04:17Z INFO fraud-score payment authorised card=4111 1111 1111 4784 amount=42.10 status=ok
 2026-09-14T02:04:30Z INFO application-api GC pause young 8ms
 2026-09-14T02:04:55Z INFO application-api GET /healthz 200 2ms
 2026-09-14T02:05:04Z INFO fraud-score scheduled job heartbeat ok
@@ -41,4 +41,4 @@
 2026-09-14T02:06:37Z INFO fraud-score cache hit ratio=0.85
 2026-09-14T02:07:14Z INFO fraud-score user login ok email=chen76@example.com src_ip=203.0.113.205
 2026-09-14T02:07:21Z INFO fraud-score cache hit ratio=0.82
-2026-09-14T02:07:32Z INFO application-api payment authorised card=4111 1111 1111 1928 amount=42.10 status=ok
+2026-09-14T02:07:32Z INFO application-api payment authorised card=4111 1111 1111 1921 amount=42.10 status=ok
