@@ -101,7 +101,7 @@ Raw results: [`docs/eval/`](docs/eval/).
 What it does: reads logs and alerts you give it, redacts them, and writes a draft. What it doesn't do: run commands, call your infrastructure, page anyone, or change anything. There's no auto-remediation, by design. Details in [docs/SAFETY.md](docs/SAFETY.md).
 
 - **Human review is required.** Every brief is labelled DRAFT and lists the exact sources so they can be checked.
-- **PII scrubbing before the model.** Emails, public IPs, card-like numbers, SIN/SSN-like numbers, bearer tokens, AWS keys and `password=`/`token=` values are replaced before the prompt is built. Routine INFO lines are dropped entirely. It's pattern-based, so treat it as one layer, not a guarantee.
+- **PII scrubbing before the model.** Emails, public IPs, card-like numbers, SIN/SSN-like numbers, bearer tokens, `Authorization: Basic` credentials, AWS keys and secret values (`password=`, `password:` and JSON keys like `"api_key": "..."`) are replaced before the prompt is built. Routine INFO lines are dropped entirely. It's pattern-based, so treat it as one layer, not a guarantee.
 - **Local first.** With `mock` or Ollama nothing leaves the machine. With Bedrock the redacted prompt goes to AWS in your account and region.
 - **Cost.** Prompts here are about 2.8 to 3.7 thousand characters (the system prompt plus evidence), so roughly a thousand tokens in and a few hundred out per incident. Check current Bedrock pricing for your model and region; the mock and Ollama cost nothing beyond your own compute.
 
