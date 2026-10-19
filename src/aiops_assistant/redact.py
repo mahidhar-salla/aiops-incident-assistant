@@ -25,7 +25,13 @@ PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     # 13-19 digits, optionally grouped. Only redacted when it starts like a major card network (2-6) and passes
     # Luhn; that keeps epoch-millisecond timestamps (13 digits starting with 1) and other long ids intact.
     ("CARD", re.compile(r"\b\d(?:[ -]?\d){12,18}\b")),
-    ("SIN_SSN", re.compile(r"\b\d{3}-\d{2,3}-\d{3,4}\b")),
+    # North American numbers with separators ("416-555-0199", "(416) 555-0199", "+1 416.555.0199") and compact
+    # E.164 ("+14165550199"). Runs before SIN_SSN, which used to swallow 3-3-4 phone numbers under the wrong label.
+    (
+        "PHONE",
+        re.compile(r"(?<![\w+])(?:\+?1[ .-]?)?(?:\(\d{3}\) ?|\d{3}[ .-])\d{3}[ .-]\d{4}\b|(?<![\w+])\+\d{10,14}\b"),
+    ),
+    ("SIN_SSN", re.compile(r"\b(?:\d{3}-\d{2}-\d{4}|\d{3}-\d{3}-\d{3})\b")),
     # Canadian SINs are often written with spaces ("046 454 286"). Three spaced digit groups are common in
     # ordinary logs, so this form is only redacted when it passes the SIN check digit (Luhn).
     ("SIN_SSN", re.compile(r"\b\d{3} \d{3} \d{3}\b")),

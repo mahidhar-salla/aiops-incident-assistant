@@ -17,7 +17,7 @@ This is a drafting tool for people on call. These are the rules it's built aroun
 - The check is lexical. It can't tell whether a real line supports the claim it's attached to. Read the cited lines.
 
 ## Data handling
-- `redact.py` replaces emails, public IPv4 addresses (private ranges are kept as useful infra evidence), card numbers (Luhn-checked, so timestamps and long ids are kept) and SIN/SSN-like numbers (dashed, or space-separated SINs that pass the check digit), bearer tokens, `Authorization: Basic` credentials, AWS access key ids and the values of `password`, `secret`, `token`, `api_key` and similar keys, whether written as `key=value`, `key: value` or JSON `"key": "value"`.
+- `redact.py` replaces emails, public IPv4 addresses (private ranges are kept as useful infra evidence), card numbers (Luhn-checked, so timestamps and long ids are kept) and SIN/SSN-like numbers (dashed, or space-separated SINs that pass the check digit), bearer tokens, `Authorization: Basic` credentials, AWS access key ids, phone numbers (North American and E.164) and the values of `password`, `secret`, `token`, `api_key` and similar keys, whether written as `key=value`, `key: value` or JSON `"key": "value"`.
 - Only WARN/ERROR lines and change events (deploys, rotations, re-runs, rebalances, restarts) go into the prompt; routine INFO lines are dropped.
 - Use `aiops-assistant triage <incident> --show-prompt` to see exactly what a model would receive.
 - Pattern-based redaction misses things. Don't feed it data you aren't allowed to send to the chosen backend.

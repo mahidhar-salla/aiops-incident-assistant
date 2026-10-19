@@ -62,3 +62,23 @@ def test_keeps_epoch_ms_timestamps():
     text = "ts=1760918400000 retry_at=1760918400001 order=1234567890123"
     out, counts = redact(text)
     assert out == text and counts == {}
+
+
+def test_scrubs_phone_numbers():
+    text = "callback 416-555-0199 or (647) 555 0123, sms +1 905.555.0142, intl +442079460958"
+    out, counts = redact(text)
+    for leaked in ("555-0199", "555 0123", "555.0142", "+442079460958"):
+        assert leaked not in out
+    assert counts == {"PHONE": 4}
+
+
+def test_phone_and_sin_get_their_own_labels():
+    out, counts = redact("phone 416-555-0199 sin 046-454-286 ssn 123-45-6789")
+    assert out == "phone [PHONE] sin [SIN_SSN] ssn [SIN_SSN]"
+    assert counts == {"PHONE": 1, "SIN_SSN": 2}
+
+
+def test_phone_pattern_leaves_dates_ips_and_durations_alone():
+    text = "2026-09-14T02:00:55Z 10.96.0.10:53 took 120 ms, v2.14.0, 3 of 10 pods"
+    out, counts = redact(text)
+    assert out == text and counts == {}
