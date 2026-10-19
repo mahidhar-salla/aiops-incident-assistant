@@ -24,8 +24,23 @@ PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ),
     ("CARD", re.compile(r"\b(?:\d[ -]?){13,19}\b")),
     ("SIN_SSN", re.compile(r"\b\d{3}-\d{2,3}-\d{3,4}\b")),
+    # Canadian SINs are often written with spaces ("046 454 286"). Three spaced digit groups are common in
+    # ordinary logs, so this form is only redacted when it passes the SIN check digit (Luhn).
+    ("SIN_SSN", re.compile(r"\b\d{3} \d{3} \d{3}\b")),
     ("IPV4", re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")),
 ]
+
+
+def luhn_ok(digits: str) -> bool:
+    """Luhn checksum, used by SINs and payment card numbers."""
+    total = 0
+    for i, ch in enumerate(reversed(digits)):
+        d = int(ch)
+        if i % 2:
+            d = d * 2 - 9 if d > 4 else d * 2
+        total += d
+    return total % 10 == 0
+
 
 # Infrastructure addresses are useful evidence (e.g. a DNS server); only public-looking client IPs are PII.
 _PRIVATE = re.compile(r"^(10\.|127\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)")
@@ -37,6 +52,8 @@ def redact(text: str) -> tuple[str, dict[str, int]]:
     def sub(kind: str) -> Callable[[re.Match[str]], str]:
         def _f(m: re.Match[str]) -> str:
             if kind == "IPV4" and _PRIVATE.match(m.group(0)):
+                return m.group(0)
+            if kind == "SIN_SSN" and " " in m.group(0) and not luhn_ok(m.group(0).replace(" ", "")):
                 return m.group(0)
             if kind in ("SECRET", "BASIC"):
                 counts[kind] = counts.get(kind, 0) + 1

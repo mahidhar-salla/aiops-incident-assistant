@@ -37,3 +37,15 @@ def test_leaves_secret_words_in_prose_alone():
     text = 'rotated secret billing-db-credentials version=7 FATAL: password authentication failed for user "app"'
     out, counts = redact(text)
     assert out == text and counts == {}
+
+
+def test_scrubs_sin_written_with_spaces():
+    out, counts = redact("customer sin=046 454 286 updated; legacy id 123-45-6789")
+    assert "046 454 286" not in out and "123-45-6789" not in out
+    assert counts["SIN_SSN"] == 2
+
+
+def test_keeps_spaced_numbers_that_are_not_sins():
+    text = "batch sizes 100 200 300 processed"
+    out, counts = redact(text)
+    assert out == text and counts == {}
