@@ -10,6 +10,9 @@ from .evidence import EvidencePack
 from .models import Brief, Incident
 
 _NUM = re.compile(r"\b\d{3,}(?:\.\d+)?\b")
+# Numbers in the evidence, as whole tokens. A unit may follow ("30ms") but not more digits,
+# so 300 in a brief is not grounded by 30000ms in a log line.
+_NUM_TOKEN = re.compile(r"(?<![a-z0-9_.])\d+(?:\.\d+)?(?!\d)")
 _IDENT = re.compile(r"\b[a-z][a-z0-9]*(?:-[a-z0-9]+){1,3}\b")
 _TS = re.compile(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z")
 
@@ -45,6 +48,7 @@ def check(brief: Brief, pack: EvidencePack, incident: Incident) -> GroundingRepo
             *(f"{r.runbook} {r.heading} {r.text}" for r in pack.runbooks),
         ]
     ).lower()
+    corpus_numbers = set(_NUM_TOKEN.findall(corpus))
     for claim in brief.all_claims():
         if not claim.cites:
             rep.uncited_claims += 1
@@ -54,7 +58,7 @@ def check(brief: Brief, pack: EvidencePack, incident: Incident) -> GroundingRepo
             if cid not in pack_ids or not in_source:
                 rep.invalid_cites.append(cid)
         low = claim.text.lower()
-        rep.unsupported_numbers += [n for n in _NUM.findall(low) if n not in corpus]
+        rep.unsupported_numbers += [n for n in _NUM.findall(low) if n not in corpus_numbers]
         rep.unsupported_identifiers += [i for i in _IDENT.findall(low) if i not in corpus]
     stamps = set(_TS.findall(corpus.upper()))
     rep.bad_timestamps = [t.ts for t in brief.timeline if t.ts not in stamps]
