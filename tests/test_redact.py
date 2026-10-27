@@ -82,3 +82,24 @@ def test_phone_pattern_leaves_dates_ips_and_durations_alone():
     text = "2026-09-14T02:00:55Z 10.96.0.10:53 took 120 ms, v2.14.0, 3 of 10 pods"
     out, counts = redact(text)
     assert out == text and counts == {}
+
+
+def test_scrubs_secret_keys_with_a_prefix():
+    # Env-style and prefixed config keys: the keyword is the last part of a longer name.
+    text = (
+        "env DB_PASSWORD=hunter2 GITHUB_TOKEN=ghp_abc123def456 aws_secret_access_key = wJalrXUtnFEMI/K7MDENG "
+        'cfg {"db_password": "pa55word", "stripe_api_key": "sk_live_abc123"} '
+        "spring.datasource.password: s3cr3t refresh_token=abc.def.ghi secret_key=k3y"
+    )
+    out, counts = redact(text)
+    for leaked in ("hunter2", "ghp_abc123def456", "wJalrXUtnFEMI", "pa55word", "sk_live_abc123", "s3cr3t", "abc.def"):
+        assert leaked not in out
+    assert "k3y" not in out
+    assert "DB_PASSWORD=[REDACTED]" in out and '"db_password": "[REDACTED]"' in out
+    assert counts == {"SECRET": 8}
+
+
+def test_keeps_keys_that_only_start_with_a_secret_word():
+    text = "token_expiry=3600 password_reset=true max_tokens=4096 tokenizer=bpe secretary=alice"
+    out, counts = redact(text)
+    assert out == text and counts == {}

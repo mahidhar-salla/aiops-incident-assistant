@@ -15,10 +15,14 @@ PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("BEARER", re.compile(r"(?i)\bbearer\s+[A-Za-z0-9._~+/=-]{8,}")),
     ("BASIC", re.compile(r"(?i)\b(authorization[\"']?\s*[:=]\s*[\"']?basic)\s+[A-Za-z0-9+/]{4,}={0,2}")),
     # key=value, key: value and JSON "key": "value". Group 1 (key + separator) is kept, the value is replaced.
+    # The key may end a longer name (DB_PASSWORD, refresh_token, aws_secret_access_key, spring.datasource.password);
+    # it must be followed by the separator, so names like token_expiry or max_tokens are left alone.
     (
         "SECRET",
         re.compile(
-            r"(?i)(\b(?:password|passwd|pwd|secret|client[_-]?secret|token|access[_-]?token|api[_-]?key)"
+            r"(?i)((?:\b|(?<=[_.-]))"
+            r"(?:password|passwd|pwd|secret[_-]?(?:access[_-]?)?key|secret|client[_-]?secret|token|access[_-]?token"
+            r"|api[_-]?key)"
             r"[\"']?\s*[:=]\s*[\"']?)([^\s\"',;}]+)"
         ),
     ),
