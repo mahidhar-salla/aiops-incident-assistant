@@ -23,7 +23,10 @@ PATTERNS: list[tuple[str, re.Pattern[str]]] = [
             r"(?i)((?:\b|(?<=[_.-]))"
             r"(?:password|passwd|pwd|secret[_-]?(?:access[_-]?)?key|secret|client[_-]?secret|token|access[_-]?token"
             r"|api[_-]?key)"
-            r"[\"']?\s*[:=]\s*[\"']?)([^\s\"',;}]+)"
+            r"[\"']?\s*[:=]\s*(?P<q>[\"'])?)"
+            # A quoted value runs to the closing quote (or the end of the line), so spaces, commas and braces inside
+            # it are redacted too. An unquoted value stops at whitespace or punctuation.
+            r"((?(q)(?:(?!(?P=q))[^\n])+|[^\s\"',;}]+))"
         ),
     ),
     # 13-19 digits, optionally grouped. Only redacted when it starts like a major card network (2-6) and passes

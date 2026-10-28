@@ -103,3 +103,27 @@ def test_keeps_keys_that_only_start_with_a_secret_word():
     text = "token_expiry=3600 password_reset=true max_tokens=4096 tokenizer=bpe secretary=alice"
     out, counts = redact(text)
     assert out == text and counts == {}
+
+
+def test_scrubs_the_whole_quoted_secret_value():
+    # A quoted value used to be cut at the first space, comma, semicolon or brace, so the rest of the secret
+    # went into the prompt.
+    text = (
+        'password="correct horse battery" {"client_secret": "a b,c;d}e"} '
+        'secret: \'x,y z\' api_key="k1 k2" pwd="" user=app'
+    )
+    out, counts = redact(text)
+    for leaked in ("horse", "battery", "b,c", "d}e", "y z", "k2"):
+        assert leaked not in out
+    assert 'password="[REDACTED]"' in out
+    assert '"client_secret": "[REDACTED]"}' in out
+    assert "secret: '[REDACTED]'" in out
+    assert 'api_key="[REDACTED]"' in out
+    assert 'pwd="" user=app' in out
+    assert counts == {"SECRET": 4}
+
+
+def test_unclosed_quote_redacts_to_end_of_line_only():
+    out, counts = redact('password="abc def\nnext line ok')
+    assert out == 'password="[REDACTED]\nnext line ok'
+    assert counts == {"SECRET": 1}

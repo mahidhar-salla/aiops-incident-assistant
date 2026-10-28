@@ -8,4 +8,5 @@
 - Grounding check for invalid citations and unsupported numbers, names and timestamps.
 - Redaction: `password:`/JSON secrets, `Authorization: Basic`, spaced SINs, Luhn-checked cards (timestamps are kept) and a separate phone pattern.
 - Redaction: secret keys at the end of a longer name (`DB_PASSWORD=`, `GITHUB_TOKEN=`, `aws_secret_access_key =`, `"db_password":`) are redacted too; they used to pass through unchanged.
+- Redaction: a quoted secret value (`password="correct horse battery"`, `"client_secret": "a,b;c"`) is redacted up to the closing quote; it used to stop at the first space, comma, semicolon or brace and pass the rest through.
 - CI: ruff, mypy (strict), pytest on Python 3.11 to 3.13, stale-data check, offline demo.
