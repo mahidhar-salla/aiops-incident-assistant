@@ -127,3 +127,21 @@ def test_unclosed_quote_redacts_to_end_of_line_only():
     out, counts = redact('password="abc def\nnext line ok')
     assert out == 'password="[REDACTED]\nnext line ok'
     assert counts == {"SECRET": 1}
+
+
+def test_scrubs_unquoted_secret_with_comma_or_semicolon():
+    # An unquoted value stopped at the first comma or semicolon, so password=abc,def put ",def" in the prompt.
+    out, counts = redact("password=abc,def user=app pwd=a;b;c token=t0k,en")
+    for leaked in ("def", "a;b", "b;c", ",en"):
+        assert leaked not in out
+    assert out == "password=[REDACTED] user=app pwd=[REDACTED] token=[REDACTED]"
+    assert counts == {"SECRET": 3}
+
+
+def test_unquoted_secret_still_stops_before_the_next_key_or_a_space():
+    text = "user=app,password=abc,host=db;port=5432 {password: abc, user: bob} token=abc, retrying"
+    out, counts = redact(text)
+    assert out == (
+        "user=app,password=[REDACTED],host=db;port=5432 {password: [REDACTED], user: bob} token=[REDACTED], retrying"
+    )
+    assert counts == {"SECRET": 3}

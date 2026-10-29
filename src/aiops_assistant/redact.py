@@ -25,8 +25,10 @@ PATTERNS: list[tuple[str, re.Pattern[str]]] = [
             r"|api[_-]?key)"
             r"[\"']?\s*[:=]\s*(?P<q>[\"'])?)"
             # A quoted value runs to the closing quote (or the end of the line), so spaces, commas and braces inside
-            # it are redacted too. An unquoted value stops at whitespace or punctuation.
-            r"((?(q)(?:(?!(?P=q))[^\n])+|[^\s\"',;}]+))"
+            # it are redacted too. An unquoted value stops at whitespace, a quote or a brace, and at a comma or
+            # semicolon only when what follows starts the next key (",host=db") or is not part of the value
+            # (", retrying"), so password=abc,def is redacted whole.
+            r"((?(q)(?:(?!(?P=q))[^\n])+|[^\s\"',;}]+(?:[,;](?=[^\s\"',;}])(?![\w.-]+\s*[:=])[^\s\"',;}]+)*))"
         ),
     ),
     # 13-19 digits, optionally grouped. Only redacted when it starts like a major card network (2-6) and passes
